@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <View style={styles.appContainer}>
       {/* Modal which is displayed if calendar button is pressed, containing a calendar */}
-      <Modal visible={calendarVisibility} animationType="fade">
+      <Modal visible={calendarVisibility}>
         {/* calendar button */}
         <View style={styles.calendarButtonActive}>
           <Pressable
