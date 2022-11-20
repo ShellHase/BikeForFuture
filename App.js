@@ -7,8 +7,10 @@ import Home from "./components/Home";
 import Stats from "./components/Stats";
 import Settings from "./components/Settings";
 
+// creating BottomTabNavigator Object
 const Tab = createBottomTabNavigator();
 
+// function for displaying the correct tabBarIcon
 function tabBarIconModifier(route, { focused, size, color }) {
   if (route.name == "Home") {
     return focused ? (
@@ -31,6 +33,7 @@ function tabBarIconModifier(route, { focused, size, color }) {
   }
 }
 
+// main function
 export default function App() {
   return (
     <NavigationContainer>

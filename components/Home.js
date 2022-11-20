@@ -5,13 +5,17 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Calendar from "./Calendar";
 
 export default function Home() {
-  let [calendarIcon, updateCalendarIcon] = useState("calendar-outline");
-  let [calendarVisibility, changeCalendarVisibility] = useState(false);
+  // state for updating calendar Icon
+  const [calendarIcon, updateCalendarIcon] = useState("calendar-outline");
+  // state for updating the calendar visibility
+  const [calendarVisibility, changeCalendarVisibility] = useState(false);
 
   return (
     <View style={styles.appContainer}>
+      {/* Modal which is displayed if calendar button is pressed, containing a calendar */}
       <Modal visible={calendarVisibility} animationType="fade">
-        <View style={styles.calendarButtonCalendar}>
+        {/* calendar button */}
+        <View style={styles.calendarButtonActive}>
           <Pressable
             onPressIn={() => {
               updateCalendarIcon("calendar-outline");
@@ -24,8 +28,11 @@ export default function Home() {
             <Ionicons name={calendarIcon} size={26} color={"orange"} />
           </Pressable>
         </View>
+        {/* calendar component */}
         <Calendar />
       </Modal>
+      {/* default home screen */}
+      {/* calendar button */}
       <View style={styles.calendarButtonHome}>
         <Pressable
           onPressIn={() => {
@@ -55,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     margin: 10,
   },
-  calendarButtonCalendar: {
+  calendarButtonActive: {
     flex: 2,
     alignItems: "flex-end",
     marginTop: 65,
