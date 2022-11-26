@@ -1,5 +1,6 @@
+import { LineChart} from 'react-native-chart-kit'
 import { useState } from "react";
-import { StyleSheet, View, Text, Pressable, Modal } from "react-native";
+import { StyleSheet, View, Text, Pressable, Modal, Dimensions } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import Calendar from "./Calendar";
@@ -9,6 +10,15 @@ export default function Home() {
   const [calendarIcon, updateCalendarIcon] = useState("calendar-outline");
   // state for updating the calendar visibility
   const [calendarVisibility, changeCalendarVisibility] = useState(false);
+  const line = {
+    labels: ['5 Minutes', '10 Minutes', '15 Minutes', '20 Minutes', '25 Minutes', '30 Minutes'],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        strokeWidth: 2, // optional
+      },
+    ],
+  };
 
   return (
     <View style={styles.appContainer}>
@@ -47,7 +57,30 @@ export default function Home() {
         </Pressable>
       </View>
       <View style={styles.mainContent}>
-        <Text style={{ fontSize: 22 }}>BikeForFuture</Text>
+        <Text>
+          Deine gewonnene Energie der letzten Fahrt
+        </Text>
+        <LineChart
+          data={linedata}
+          width={Dimensions.get('window').width} // from react-native
+          height={220}
+          yAxisLabel={'$'}
+          chartConfig={{
+            backgroundColor: '#e26a00',
+            backgroundGradientFrom: '#fb8c00',
+            backgroundGradientTo: '#ffa726',
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            style: {
+              borderRadius: 16
+            }
+          }}
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 16
+          }}
+        />
       </View>
     </View>
   );
